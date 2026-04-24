@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kinza Saleemi · My Story | Software Engineer Student & Creative Explorer</title>
+  <!-- Preconnect & Google Fonts for 3 unique professional combinations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Combo 1: Lora (serif headings) + Inter (sans body) -->
+  <!-- Combo 2: Playfair Display (serif headings) + Roboto (sans body) -->
+  <!-- Combo 3: Montserrat (sans headings) + Merriweather (serif body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #F4F2EE;  /* soft creamy-neutral from palette background */
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* MAIN LAYOUT & CARD STYLES */
+    .story-wrapper {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* main story card – clean, spacious, with subtle depth */
+    .story-card {
+      background: #FFFFFF;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2.5rem 2rem;
+      transition: box-shadow 0.2s ease, background 0.2s;
+    }
+
+    @media (max-width: 600px) {
+      .story-wrapper {
+        padding: 1.2rem 1rem 3rem;
+      }
+      .story-card {
+        padding: 1.8rem 1.5rem;
+      }
+    }
+
+    /* TYPOGRAPHY BASE (fallback) – controlled by combo classes */
+    .story-container {
+      transition: font-family 0.2s ease;
+    }
+
+    /* ----- COMBO 1 (Lora + Inter) professional editorial ----- */
+    .story-container.combo1 h1, 
+    .story-container.combo1 h2, 
+    .story-container.combo1 h3, 
+    .story-container.combo1 .story-headline {
+      font-family: 'Lora', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .story-container.combo1 p, 
+    .story-container.combo1 li, 
+    .story-container.combo1 blockquote, 
+    .story-container.combo1 .story-text, 
+    .story-container.combo1 .subhead,
+    .story-container.combo1 .story-meta,
+    .story-container.combo1 .hobby-tag {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 400;
+    }
+
+    /* ----- COMBO 2 (Playfair Display + Roboto) classic & refined ----- */
+    .story-container.combo2 h1, 
+    .story-container.combo2 h2, 
+    .story-container.combo2 h3, 
+    .story-container.combo2 .story-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .story-container.combo2 p, 
+    .story-container.combo2 li, 
+    .story-container.combo2 blockquote, 
+    .story-container.combo2 .story-text, 
+    .story-container.combo2 .subhead,
+    .story-container.combo2 .story-meta,
+    .story-container.combo2 .hobby-tag {
+      font-family: 'Roboto', system-ui, sans-serif;
+      font-weight: 400;
+    }
+
+    /* ----- COMBO 3 (Montserrat headings + Merriweather body) modern & unique ----- */
+    .story-container.combo3 h1, 
+    .story-container.combo3 h2, 
+    .story-container.combo3 h3, 
+    .story-container.combo3 .story-headline {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .story-container.combo3 p, 
+    .story-container.combo3 li, 
+    .story-container.combo3 blockquote, 
+    .story-container.combo3 .story-text, 
+    .story-container.combo3 .subhead,
+    .story-container.combo3 .story-meta,
+    .story-container.combo3 .hobby-tag {
+      font-family: 'Merriweather', Georgia, serif;
+      font-weight: 400;
+    }
+
+    /* Color palette – Coolors Inspired: "Muted Horizon" Deep Navy, Burnt Sienna, Sand, Warm White, Slate */
+    :root {
+      --color-deep-navy: #1E2A3E;
+      --color-burnt-sienna: #E3642B;
+      --color-warm-sand: #F3EFE6;
+      --color-soft-slate: #556B7A;
+      --color-pure-white: #FFFFFF;
+      --color-charcoal-text: #1F2A3C;
+      --color-accent-light: rgba(227, 100, 43, 0.08);
+    }
+
+    .story-card {
+      background: var(--color-pure-white);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    /* global text & accent colors */
+    h1, h2, h3 {
+      color: var(--color-deep-navy);
+      margin-top: 0;
+      font-weight: 600;
+    }
+
+    p, li, blockquote {
+      color: #2C3A4B;
+    }
+
+    .story-container a {
+      color: var(--color-burnt-sienna);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(227, 100, 43, 0.3);
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .story-container a:hover {
+      color: #c04d1e;
+      border-bottom-color: var(--color-burnt-sienna);
+    }
+
+    /* spacing & rhythm */
+    .story-card h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .story-card .subhead {
+      font-size: 1.2rem;
+      color: var(--color-soft-slate);
+      border-left: 3px solid var(--color-burnt-sienna);
+      padding-left: 1rem;
+      margin: 0.75rem 0 1.8rem 0;
+      font-weight: 400;
+    }
+
+    .story-card h2 {
+      font-size: 1.75rem;
+      margin: 2rem 0 1rem 0;
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+
+    .story-card h3 {
+      font-size: 1.35rem;
+      margin: 1.5rem 0 0.8rem 0;
+      font-weight: 500;
+    }
+
+    .story-card p {
+      margin-bottom: 1.4rem;
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+
+    .story-card blockquote {
+      margin: 2rem 0;
+      padding: 1.2rem 1.8rem;
+      background: var(--color-warm-sand);
+      border-radius: 24px;
+      font-style: normal;
+      border-left: 6px solid var(--color-burnt-sienna);
+      font-weight: 450;
+      color: #1E2A3A;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .story-card blockquote p {
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .inline-highlight {
+      display: inline-block;
+      background: rgba(227, 100, 43, 0.1);
+      color: #af4f1e;
+      padding: 0.1rem 0.3rem;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    hr.story-divider {
+      margin: 2rem 0;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D4D9E2, transparent);
+    }
+
+    /* hobby / interest chips */
+    .hobby-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .hobby-tag {
+      background: var(--color-warm-sand);
+      padding: 0.45rem 1.1rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-deep-navy);
+      transition: transform 0.1s ease, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hobby-tag:hover {
+      background: #e9e0d4;
+      transform: translateY(-2px);
+    }
+    .value-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+      list-style: none;
+    }
+    .value-list li {
+      background: var(--color-warm-sand);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-deep-navy);
+    }
+
+    /* two-column mini info for current favorites */
+    .favorites-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 1rem 0 1.2rem;
+      background: #FAF8F4;
+      padding: 1rem 1.4rem;
+      border-radius: 28px;
+    }
+    .fav-col {
+      flex: 1;
+      min-width: 140px;
+    }
+    .fav-col strong {
+      color: var(--color-burnt-sienna);
+      font-weight: 600;
+    }
+
+    /* BUTTON GROUP for 3 font combos */
+    .font-switch-panel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .combo-btn {
+      background: transparent;
+      border: 1.5px solid #DCE3EC;
+      padding: 0.7rem 1.5rem;
+      border-radius: 80px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: system-ui, 'Inter', sans-serif;
+      color: var(--color-deep-navy);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+      letter-spacing: -0.2px;
+      background: white;
+    }
+    .combo-btn i {
+      font-style: normal;
+      display: inline-block;
+    }
+    .combo-btn:hover {
+      border-color: var(--color-burnt-sienna);
+      background: rgba(227, 100, 43, 0.05);
+      transform: translateY(-1px);
+    }
+    .combo-btn.active {
+      background: var(--color-deep-navy);
+      border-color: var(--color-deep-navy);
+      color: white;
+      box-shadow: 0 4px 10px rgba(30, 42, 62, 0.2);
+    }
+    .combo-btn.active:hover {
+      background: #14222e;
+    }
+
+    /* palette showcase (Coolors reference) */
+    .palette-credit {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.75rem;
+      font-family: system-ui, monospace;
+      color: #5C6F87;
+      border-top: 1px solid #EAEDF2;
+      padding-top: 1.5rem;
+    }
+    .swatch-group {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 28px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .credit-text {
+      font-weight: 450;
+      background: #F8F6F2;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+    }
+    a.coolors-link {
+      border-bottom: none;
+      color: var(--color-burnt-sienna);
+      font-weight: 500;
+    }
+
+    /* background: subtle organic texture + light gradient */
+    body {
+      background: radial-gradient(circle at 10% 20%, rgba(227,100,43,0.02) 0%, rgba(243,239,230,0.3) 100%),
+                  repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 2px, transparent 2px, transparent 8px);
+      background-color: #FEFCF8;
+    }
+
+    .story-meta {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--color-soft-slate);
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .signature {
+      font-weight: 500;
+      font-family: inherit;
+    }
+    @media (max-width: 480px) {
+      .story-card h1 {
+        font-size: 2.2rem;
+      }
+      .story-card p {
+        font-size: 1rem;
+      }
+      .favorites-row {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="story-wrapper">
+  <!-- font combo switcher: experiment with 3 unique professional typography sets -->
+  <div class="font-switch-panel">
+    <button class="combo-btn active" data-combo="combo1"> ✦ COMBO 1 · Lora + Inter <span style="font-weight:normal; opacity:0.7;">(Editorial)</span></button>
+    <button class="combo-btn" data-combo="combo2"> ✦ COMBO 2 · Playfair + Roboto <span style="font-weight:normal; opacity:0.7;">(Classic)</span></button>
+    <button class="combo-btn" data-combo="combo3"> ✦ COMBO 3 · Montserrat + Merriweather <span style="font-weight:normal; opacity:0.7;">(Modern)</span></button>
+  </div>
+
+  <!-- main story container, dynamic font classes applied -->
+  <div class="story-container combo1" id="storyContainer">
+    <div class="story-card">
+      <!-- "My Story" headline -->
+      <h1>My Story</h1>
+      <div class="subhead">Kinza Saleemi — software engineering student & creative explorer bridging code, culture, and curiosity</div>
+      
+      <p><span class="inline-highlight">Kinza Saleemi</span> — currently pursuing software engineering, I see every line of code as a new sentence in a larger narrative. My journey fuses logical thinking with creative wanderlust: from debugging algorithms to navigating foreign streets, from reading literary classics to binge‑watching thought‑provoking series. I believe that the most innovative engineers are also storytellers, language learners, and travelers at heart. <strong>This is my evolving story.</strong></p>
+      
+      <h2>✦ Where logic meets curiosity</h2>
+      <p>I grew up surrounded by both computers and colourful travel diaries. At sixteen, I wrote my first Python script and fell in love with the elegance of problem-solving. But I also loved discovering new cultures — flipping through language guides, planning imaginary itineraries. Today, as a <strong>software engineering student</strong>, I'm channeling that same energy into building tools that are functional, inclusive, and human‑centered. My room is a hybrid space: whiteboard full of system designs on one wall, a world map dotted with pins on the other.</p>
+      
+      <h2>🌍 Traveling, languages & the art of immersion</h2>
+      <p>For me, traveling isn't just about sightseeing — it's a lesson in adaptability. From the chaotic charm of Istanbul's bazaars to the quiet mornings in the Scottish Highlands, I collect stories, not souvenirs. This passion naturally grew into a love for languages: I'm fluent in Urdu and English, currently learning Japanese (to read untranslated Murakami and survive spontaneous Tokyo trips), and dabbling in Spanish. Each new language unlocks a different way to think — both in conversation and in code.</p>
+      
+      <div class="hobby-grid">
+        <span class="hobby-tag">✈️ Traveling · 12+ countries</span>
+        <span class="hobby-tag">📖 Reading (lit fic & tech essays)</span>
+        <span class="hobby-tag">🗣️ Urdu · English · 日本語 (N4)</span>
+        <span class="hobby-tag">🎬 Series (Arcane · The Bear · Dark)</span>
+        <span class="hobby-tag">💻 Full-stack learner</span>
+      </div>
+      
+      <h2>📚 Reading, series & narrative obsession</h2>
+      <p>Between semesters, I disappear into books — I love the emotional depth of authors like Ocean Vuong and the clarity of technical memoirs. My favorite series? Anything that plays with nonlinear storytelling and character complexity: <em>Arcane</em> for its stunning craft, <em>The Bear</em> for its raw energy, and <em>Dark</em> for its mind‑bending structure. I believe great series, like great software, rely on consistent internal logic and meaningful callbacks. They inspire how I design user experiences: layered, rewarding, and empathetic.</p>
+      
+      <blockquote>
+        <p>“Code and culture aren't separate worlds — they're dialogues. Traveling taught me to embrace ambiguity, languages taught me precision, and stories taught me why people matter. That's what I bring to every project.”</p>
+        <div style="margin-top: 12px; font-size: 0.85rem;">— Kinza Saleemi, software engineering student</div>
+      </blockquote>
+      
+      <h2>⚙️ The engineer's mindset & creative rhythm</h2>
+      <p>As a <strong>software engineer student</strong>, I've built full‑stack applications, contributed to open source, and collaborated on hackathon projects that aim to solve local problems. But I also make time for handwritten journaling, learning new spoken phrases, and curating playlists for every travel memory. I'm currently exploring the intersection of generative AI and language learning tools — because why shouldn't tech feel as organic as a conversation over chai?</p>
+      
+      <div class="favorites-row">
+        <div class="fav-col">
+          <strong>📌 Current reads</strong><br>
+          "Klara and the Sun" by Ishiguro<br>
+          "The Pragmatic Programmer"
+        </div>
+        <div class="fav-col">
+          <strong>🎧 Listening to</strong><br>
+        Jazz fusion · lo-fi study beats · Urdu poetry podcasts
+        </div>
+        <div class="fav-col">
+          <strong>✈️ Next dream destination</strong><br>
+          Kyoto & Seoul — autumn foliage & tech meetups
+        </div>
+      </div>
+      
+      <h3>✨ Core beliefs that guide my journey</h3>
+      <ul class="value-list">
+        <li>Stay curious beyond the terminal</li>
+        <li>Learn one new word (or function) daily</li>
+        <li>Design for real humans, not just devices</li>
+        <li>Embrace the detour — both in travel and code</li>
+        <li>Share stories, amplify voices</li>
+      </ul>
+      
+      <p>Right now, I'm balancing final year projects, mentoring first‑year CS students, and planning a mini digital zine about nomadic engineering life. When I'm not debugging or reading memoirs, you'll find me hunting for the perfect cup of cardamom coffee, learning a new kanji, or rewatching an episode of <em>Frieren</em> for comfort. Life is about continuous integration — of skills, memories, and kindness.</p>
+      
+      <hr class="story-divider">
+      
+      <div class="story-meta">
+        <span class="signature">✍️ Kinza Saleemi · software engineering student & global storyteller</span>
+        <span>📍 Lahore / Seattle (virtual footprints) · always exploring</span>
+      </div>
+      
+      <!-- subtle color palette block referencing Coolors.co palette -->
+      <div class="palette-credit">
+        <div class="swatch-group">
+          <span class="swatch" style="background: #1E2A3E;"></span>
+          <span class="swatch" style="background: #E3642B;"></span>
+          <span class="swatch" style="background: #F3EFE6;"></span>
+          <span class="swatch" style="background: #556B7A;"></span>
+          <span class="swatch" style="background: #FFFFFF;"></span>
+          <span style="font-size:0.7rem;">🎨 Coolors “Muted Horizon”</span>
+        </div>
+        <div class="credit-text">
+          ✦ Color scheme from <a href="#" class="coolors-link" target="_blank">Coolors.co/palette/1e2a3e-e3642b-f3efe6-556b7a</a> · deep navy, burnt sienna, warm sand & slate
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Get container and all combo buttons
+    const container = document.getElementById('storyContainer');
+    const btns = document.querySelectorAll('.combo-btn');
+    
+    // define combo classes mapping
+    const combos = {
+      combo1: 'combo1',
+      combo2: 'combo2',
+      combo3: 'combo3'
+    };
+    
+    // function to set active font combination
+    function setActiveCombo(comboClass) {
+      // remove all existing combo classes
+      container.classList.remove('combo1', 'combo2', 'combo3');
+      // add new combo class
+      container.classList.add(comboClass);
+      
+      // update button active states
+      btns.forEach(btn => {
+        const btnCombo = btn.getAttribute('data-combo');
+        if (btnCombo === comboClass) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+    
+    // attach event listeners to each button
+    btns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const comboValue = btn.getAttribute('data-combo');
+        if (comboValue && combos[comboValue]) {
+          setActiveCombo(comboValue);
+          // subtle micro interaction: provide haptic feedback
+          btn.style.transform = 'scale(0.98)';
+          setTimeout(() => { btn.style.transform = ''; }, 120);
+        }
+      });
+    });
+    
+    // ensure first combo is active on load (combo1)
+    // already class combo1 in HTML, but sync active button state
+    const initialCombo = 'combo1';
+    if (container.classList.contains(initialCombo)) {
+      btns.forEach(btn => {
+        if (btn.getAttribute('data-combo') === initialCombo) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    } else {
+      // fallback: enforce combo1
+      setActiveCombo('combo1');
+    }
+  })();
+</script>
+</body>
+</html>
