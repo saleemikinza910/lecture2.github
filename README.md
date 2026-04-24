@@ -1,4 +1,6 @@
  lecture2.github
+
+ 
  ✨ My Story – Kinza Saleemi
 
 A beautifully designed personal “My Story” page that showcases a software engineering student’s journey, hobbies, and creative side. The page features an elegant color palette from Coolors, three unique professional font combinations, and a responsive layout with subtle background textures.
